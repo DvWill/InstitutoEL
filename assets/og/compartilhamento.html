@@ -1,28 +1,25 @@
 <!doctype html>
 <!--
   Imagem de compartilhamento do site (a que aparece quando o link é enviado no
-  WhatsApp e em outras redes): 1200x630, com a logo do Instituto em destaque.
+  WhatsApp e em outras redes): 1200x630, só com a logo do Instituto, grande.
 
-  O conteúdo importante fica no quadrado central (630x630), porque o WhatsApp
-  Web corta a imagem em quadrado na miniatura. As laterais só aparecem na
-  prévia grande e têm apenas elementos decorativos.
+  A logo ocupa quase todo o quadrado central (630x630), porque o WhatsApp corta
+  a imagem em quadrado na miniatura pequena e a mostra em baixa resolução:
+  quanto maior a logo, mais legível ela fica ali. Não há texto na imagem; o
+  título e a descrição já aparecem ao lado, vindos das tags da página.
+  As laterais só aparecem na prévia grande e têm apenas elementos decorativos.
 
   Para gerar de novo, na raiz do projeto (Edge ou Chrome):
     msedge --headless=new --hide-scrollbars --window-size=1200,630
       --force-device-scale-factor=2 --screenshot=og.png assets/og/compartilhamento.html
-  Depois reduza para 1200x630 e salve em JPEG como app/opengraph-image.jpg e
-  app/twitter-image.jpg (o WhatsApp ignora imagens muito pesadas; mantenha
-  abaixo de 300 KB).
+  Depois reduza para 1200x630 e salve em JPEG (qualidade alta, sem redução de
+  cor) como app/opengraph-image.jpg e app/twitter-image.jpg. O WhatsApp ignora
+  imagens pesadas: mantenha abaixo de 300 KB.
 -->
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
     <title>Imagem de compartilhamento</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Sora:wght@600;700&display=block"
-      rel="stylesheet"
-    />
     <style>
       * {
         margin: 0;
@@ -32,7 +29,6 @@
       :root {
         --navy: #062a5e;
         --navy-deep: #03163a;
-        --blue: #0d4a9a;
         --yellow: #fdb913;
         --yellow-soft: #ffd564;
       }
@@ -50,9 +46,9 @@
         overflow: hidden;
         background:
           radial-gradient(
-            circle 460px at 50% 40%,
-            rgba(253, 185, 19, 0.22),
-            transparent 70%
+            circle 520px at 50% 50%,
+            rgba(253, 185, 19, 0.26),
+            transparent 72%
           ),
           radial-gradient(
             circle 520px at 0% 100%,
@@ -70,32 +66,21 @@
             var(--navy) 48%,
             var(--navy-deep) 100%
           );
-        color: #fff;
-        font-family: Inter, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
       }
       /* Órbitas em volta da logo, como no topo do site. */
       .orbits {
         position: absolute;
         top: 0;
         left: 0;
-        /* As linhas somem antes do texto, para não cruzar as letras. */
-        -webkit-mask-image: linear-gradient(
-          180deg,
-          #000 0%,
-          #000 66%,
-          transparent 76%
-        );
-        mask-image: linear-gradient(180deg, #000 0%, #000 66%, transparent 76%);
       }
-      /* Selo branco com a logo: o elemento principal da imagem. */
+      /* Selo branco com a logo: ocupa quase toda a altura da imagem. */
       .seal {
         position: absolute;
-        top: 46px;
-        left: 395px;
+        top: 41px;
+        left: 330px;
         display: grid;
-        width: 410px;
-        height: 410px;
+        width: 540px;
+        height: 540px;
         place-items: center;
         border-radius: 50%;
         background: #fff;
@@ -105,56 +90,16 @@
       }
       .seal img {
         display: block;
-        width: 330px;
-        height: 330px;
+        width: 444px;
+        height: 444px;
         object-fit: contain;
-      }
-      h1 {
-        position: absolute;
-        top: 496px;
-        right: 0;
-        left: 0;
-        font:
-          700 28px/1.15 Sora,
-          Arial,
-          sans-serif;
-        letter-spacing: -0.03em;
-        text-align: center;
-        text-shadow: 0 4px 24px rgba(1, 10, 30, 0.6);
-      }
-      h1 em {
-        color: var(--yellow);
-        font-style: normal;
-      }
-      .steps {
-        position: absolute;
-        top: 552px;
-        right: 0;
-        left: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 13px;
-        color: #d5e3fa;
-        font:
-          700 13px/1 Inter,
-          Arial,
-          sans-serif;
-        letter-spacing: 0.17em;
-        text-transform: uppercase;
-      }
-      .steps i {
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        background: var(--yellow);
       }
       .bar {
         position: absolute;
         right: 0;
         bottom: 0;
         left: 0;
-        height: 8px;
+        height: 6px;
         background: linear-gradient(
           90deg,
           var(--yellow) 0%,
@@ -175,56 +120,45 @@
       >
         <circle
           cx="600"
-          cy="251"
-          r="262"
+          cy="311"
+          r="306"
           stroke="rgba(255,255,255,0.3)"
           stroke-width="1.5"
           stroke-dasharray="3 9"
         />
         <circle
           cx="600"
-          cy="251"
-          r="330"
-          stroke="rgba(253,185,19,0.6)"
+          cy="311"
+          r="382"
+          stroke="rgba(253,185,19,0.65)"
           stroke-width="1.5"
         />
         <circle
           cx="600"
-          cy="251"
-          r="440"
-          stroke="rgba(255,255,255,0.14)"
+          cy="311"
+          r="470"
+          stroke="rgba(255,255,255,0.16)"
           stroke-width="1.5"
         />
         <circle
           cx="600"
-          cy="251"
-          r="560"
-          stroke="rgba(255,255,255,0.08)"
+          cy="311"
+          r="570"
+          stroke="rgba(255,255,255,0.09)"
           stroke-width="1.5"
         />
-        <circle
-          cx="600"
-          cy="251"
-          r="690"
-          stroke="rgba(255,255,255,0.05)"
-          stroke-width="1.5"
-        />
-        <circle cx="314" cy="86" r="8" fill="#fdb913" />
-        <circle cx="917" cy="343" r="6" fill="#fdb913" />
-        <circle cx="862" cy="251" r="5" fill="#fff" fill-opacity="0.9" />
-        <circle cx="372" cy="380" r="5" fill="#fff" fill-opacity="0.85" />
-        <circle cx="177" cy="372" r="6" fill="#fdb913" fill-opacity="0.85" />
-        <circle cx="1030" cy="158" r="6" fill="#fdb913" fill-opacity="0.85" />
-        <circle cx="94" cy="130" r="4" fill="#fff" fill-opacity="0.55" />
-        <circle cx="1118" cy="430" r="4" fill="#fff" fill-opacity="0.55" />
+        <circle cx="241" cy="180" r="9" fill="#fdb913" />
+        <circle cx="959" cy="441" r="9" fill="#fdb913" />
+        <circle cx="158" cy="472" r="6" fill="#fff" fill-opacity="0.9" />
+        <circle cx="1042" cy="150" r="6" fill="#fff" fill-opacity="0.9" />
+        <circle cx="231" cy="402" r="5" fill="#fdb913" fill-opacity="0.85" />
+        <circle cx="969" cy="220" r="5" fill="#fdb913" fill-opacity="0.85" />
+        <circle cx="62" cy="214" r="4" fill="#fff" fill-opacity="0.55" />
+        <circle cx="1138" cy="408" r="4" fill="#fff" fill-opacity="0.55" />
       </svg>
       <div class="seal">
         <img src="../originais/instituto-logo.png" alt="" />
       </div>
-      <h1>Formação de gestores <em>para redes de ensino</em></h1>
-      <p class="steps">
-        Formação<i></i>Estratégia<i></i>Acompanhamento<i></i>Resultados
-      </p>
       <div class="bar"></div>
     </div>
   </body>
