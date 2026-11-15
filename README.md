@@ -29,6 +29,7 @@ Site do Instituto de Educação e Liderança: uma página única, feita em Next.
 | `lib/seo.ts`                              | Título, descrição e endereço do site.                              |
 | `public/images`                           | Imagens da página, já em WebP no tamanho de uso.                   |
 | `assets/originais`                        | Fotos originais (não vão para o site), para gerar novas versões.   |
+| `assets/og`                               | Modelo da imagem de compartilhamento (WhatsApp e redes sociais).   |
 
 ## Publicar na Vercel
 
@@ -36,9 +37,17 @@ Site do Instituto de Educação e Liderança: uma página única, feita em Next.
 2. Na Vercel, importe o repositório. O `vercel.json` já define o build.
 3. Aponte o domínio do Instituto para o projeto (Settings → Domains).
 
-O endereço do site (canonical, sitemap e imagem de compartilhamento) é detectado
-sozinho na Vercel, a partir do domínio de produção do projeto. Para fixar outro
-endereço, defina a variável `NEXT_PUBLIC_SITE_URL` (veja `.env.example`).
+O endereço oficial do site (canonical, sitemap e imagem de compartilhamento) é
+`https://institutoel.com.br`, definido em `lib/seo.ts`. Para usar outro
+endereço sem mexer no código, defina a variável `NEXT_PUBLIC_SITE_URL` (veja
+`.env.example`).
+
+## Imagem de compartilhamento
+
+É a imagem que aparece quando o link do site é enviado no WhatsApp e em outras
+redes: `app/opengraph-image.jpg` e `app/twitter-image.jpg` (1200x630). O modelo
+dela fica em `assets/og/compartilhamento.html`, com as instruções para gerar de
+novo no começo do arquivo.
 
 ## Depois de publicar
 

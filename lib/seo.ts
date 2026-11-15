@@ -7,19 +7,13 @@ import { SITE_CONFIG } from './site-config';
  */
 
 /**
- * Endereço público do site, sem barra no final. Na Vercel, o domínio de
- * produção do projeto é detectado sozinho (VERCEL_PROJECT_PRODUCTION_URL);
- * NEXT_PUBLIC_SITE_URL permite fixar outro endereço.
+ * Endereço oficial do site, sem barra no final: base do canonical, do sitemap
+ * e da imagem de compartilhamento. NEXT_PUBLIC_SITE_URL permite trocar o
+ * endereço sem mexer no código (por exemplo, num ambiente de testes).
  */
-function resolveSiteUrl() {
-  const explicit = process.env.NEXT_PUBLIC_SITE_URL;
-  if (explicit) return explicit.replace(/\/+$/, '');
-  const production = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-  if (production) return `https://${production}`;
-  return 'http://localhost:3000';
-}
-
-export const SITE_URL = resolveSiteUrl();
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://institutoel.com.br'
+).replace(/\/+$/, '');
 export const SITE_NAME = 'Instituto de Educação e Liderança';
 export const SITE_LOCALE = 'pt_BR';
 
